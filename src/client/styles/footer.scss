@@ -1,0 +1,13 @@
+footer {
+  $light-bg: #a5d6a7; // Light green background color
+  $dark-color: #2e7d32; // Dark green text color
+
+  padding: 1em;
+  background-color: $light-bg;
+  border-top: 1px solid $dark-color;
+
+  p {
+    text-align: center;
+    color: $dark-color;
+  }
+}

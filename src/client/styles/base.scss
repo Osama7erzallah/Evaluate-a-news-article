@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1f8e9; // Light pistachio background
+  color: #333; // Dark text color
+
+  main {
+    flex: 2;
+    margin: 0 2em;
+
+    section {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      .result {
+        font-size: 1.2em;
+        border-bottom: 1px solid #a5d6a7; // Light green border
+        margin-bottom: 1em;
+      }
+
+      #results {
+        .result-part {
+          margin-bottom: 0.8em;
+        }
+      }
+    }
+  }
+    .sl-c-pop-stripe {
+      height: .3rem;
+      background-image: linear-gradient(to right, #EE2A35 0%, #EE2A35 25%, black 25%, black 50%, white 50%, white 75%, #009736 75%, #009736 100%);
+      background-size: 100%;
+    }
+}

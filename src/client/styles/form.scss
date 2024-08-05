@@ -1,0 +1,98 @@
+form {
+  $input-bg: #f1f8e9; // Light pistachio background for input
+  $input-border: #2e7d32; // Dark green border for input
+  $button-bg: #81c784; // Medium green background for button
+  $button-hover: #66bb6a; // Darker green for button hover
+  $button-active: #4caf50; // Even darker green for button active state
+  $error-color: #e57373; // Light red color for errors
+  $success-color: #4caf50; // Dark green color for success
+
+  border: 1px solid $input-border;
+  border-radius: 8px;
+  padding: 40px;
+  background-color: #ffffff; // White background for the form
+  position: relative;
+
+  input {
+    padding: 0.75em;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 1em;
+    border: 1px solid $input-border;
+    border-radius: 5px;
+    background-color: $input-bg;
+    color: #333;
+
+    &::placeholder {
+      color: #666;
+    }
+  }
+
+  .feedback-container {
+    .feedback-error {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: $error-color;
+    }
+
+    .feedback-success {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: $success-color;
+    }
+  }
+
+  #submit-button {
+    padding: 8px 16px;
+    font-size: 1em;
+    width: 100%;
+    margin: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid $button-bg;
+    border-radius: 8px;
+    background-color: $button-bg;
+    color: #fff;
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+
+    &:active {
+      background-color: $button-active;
+    }
+  }
+
+  .loading-spinner {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+  }
+
+  .error-container {
+    display: none;
+
+    p {
+      width: 100%;
+      text-align: center;
+      color: $error-color;
+      border: 1px solid $error-color;
+      border-radius: 8px;
+      background-color: rgba(229, 115, 115, 0.1);
+      padding: 1em;
+      margin-top: 1em;
+    }
+  }
+}

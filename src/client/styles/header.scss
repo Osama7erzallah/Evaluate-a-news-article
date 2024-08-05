@@ -1,0 +1,18 @@
+header {
+  $header-bg: #81c784; // Medium green background color
+  $header-text: #ffffff; // White text color
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: $header-bg;
+  border-bottom: 1px solid darken($header-bg, 10%);
+
+  h1 {
+    font-size: 1.5em;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: $header-text;
+  }
+}
