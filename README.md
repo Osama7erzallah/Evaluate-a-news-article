@@ -33,15 +33,9 @@ This is a Single Page Application (SPA) built from scratch using Webpack. It use
      npm run build-dev
      ```
    
-   - Access the development environment at `http://localhost:3000`.
+   - Access the development environment at `http://localhost:8000`.
 
-3. **Run Unit Tests:**
-   To execute unit tests, use:
-   ```bash
-   npm run test
-   ```
-
-4. **Production Mode:**
+3.  **Production Mode:**
    
    - **Build Production Files:**
      ```bash
