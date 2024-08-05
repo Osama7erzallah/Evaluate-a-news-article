@@ -1,11 +1,11 @@
-## 📰 NLP News Analyzer
+##  NLP News Analyzer
 
 **Introduction:**
 This is a Single Page Application (SPA) built from scratch using Webpack. It uses MeaningCloud's API to analyze news articles through Natural Language Processing (NLP).
 
 ---
 
-### 🛠️ Technologies Used
+###  Technologies Used
 
 - **Webpack**
 - **SCSS**
@@ -13,7 +13,7 @@ This is a Single Page Application (SPA) built from scratch using Webpack. It use
 
 ---
 
-### 🚀 How to Get Started
+###  How to Get Started
 
 1. **Install Dependencies:**
    First, run the following command to install all required packages:
