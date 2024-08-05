@@ -53,7 +53,7 @@ This is a Single Page Application (SPA) built from scratch using Webpack. It use
      npm run start
      ```
    
-   - The application will be live at `http://localhost:3000`.
+   - The application will be live at `http://localhost8000`.
 
 ---
 
