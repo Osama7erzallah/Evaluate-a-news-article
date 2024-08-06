@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>News NLP Analysis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News NLP Analysis Tool</title>
+  <link rel="stylesheet" href="styles/main.css"> <!-- Assuming you have a main.css file for styling -->
 </head>
 <body>
   <header>
@@ -13,22 +15,24 @@
     <section>
       <form id="url-form" method="post">
         <label for="url-input">Analyze a News Article URL:</label>
-        <input id="url-input" type="text" name="url" placeholder="Paste the URL here" required />
-        <div class="feedback-container"></div>
+        <input id="url-input" type="text" name="url" placeholder="Paste the URL here" required>
+        <div class="feedback-wrapper"></div>
         <button id="submit-button" type="submit">Analyze Now</button>
-        <div class="loading-spinner" style="visibility:hidden;">Loading...</div>
-        <div class="error-container" style="display:none;"></div>
+        <div class="loader" style="visibility:hidden;">Loading...</div>
+        <div class="error-wrapper" style="display:none;"></div>
       </form>
     </section>
-
     <section>
       <p class="result"><strong>Analysis Results:</strong></p>
       <div id="results"></div>
     </section>
   </main>
-
   <footer>
-    <p>&copy; Osama Herzallah</p>
+    <p>&copy; <span id="current-year"></span> Osama Herzallah. All rights reserved.</p>
   </footer>
+  <script src="bundle.js"></script> <!-- Assuming you bundle your JS files -->
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

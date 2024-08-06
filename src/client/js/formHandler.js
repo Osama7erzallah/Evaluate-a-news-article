@@ -51,7 +51,7 @@ const displayResults = (responseData) => {
   `;
 };
 
-const submitFormHandler = async (event) => {
+const handleFormSubmit = async (event) => {
   event.preventDefault();
 
   const urlInputElement = document.querySelector("#url-form input");
@@ -82,4 +82,4 @@ const submitFormHandler = async (event) => {
   }
 };
 
-export { submitFormHandler };
+export { handleFormSubmit };
