@@ -1,81 +1,85 @@
 import axios from "axios";
 import { isValidURL } from "./validateURL";
 
-const handleURLValidation = (value) => {
-  const feedback = document.querySelector(".feedback-wrapper");
+const validateURLInput = (urlValue) => {
+  const feedbackSection = document.querySelector(".feedback-wrapper");
 
-  const isValid = isValidURL(value);
-  if (!isValid) {
-    feedback.innerHTML = "<p class='feedback-error'>Enter a valid URL</p>";
+  const isURLValid = isValidURL(urlValue);
+  if (!isURLValid) {
+    feedbackSection.innerHTML =
+      "<p class='feedback-error'>Please enter a valid URL. URLs should start with http:// or https:// and include a domain name.</p>";
     return false;
   }
   return true;
 };
 
-const setLoading = (show) => {
-  const loader = document.querySelector(".loading-spinner");
-  loader.style.visibility = show ? "visible" : "hidden";
+const setLoaderVisibility = (isVisible) => {
+  const loadingSpinner = document.querySelector(".loader");
+
+  loadingSpinner.style.visibility = isVisible ? "visible" : "hidden";
 };
 
-const handleError = (show, msg) => {
-  const error = document.querySelector(".error-container");
-  error.innerHTML = `<p>${msg}</p>`;
-  error.style.display = show ? "block" : "none";
+const displayErrorMessage = (isVisible, message) => {
+  const errorSection = document.querySelector(".error-wrapper");
+
+  errorSection.innerHTML = `<p class='error-message'>${message}</p>`;
+  errorSection.style.display = isVisible ? "block" : "none";
 };
 
-const renderResponse = (data) => {
-  const results = document.getElementById("results");
+const displayResults = (responseData) => {
+  const resultContainer = document.getElementById("results");
 
-  if (!data) {
-    handleError(true, "Internal error");
+  if (!responseData) {
+    displayErrorMessage(
+      true,
+      "An unexpected internal error occurred. Please try again later."
+    );
     return;
   }
 
-  if (data?.error) {
-    handleError(true, data.error);
+  if (responseData?.error) {
+    displayErrorMessage(true, responseData.error);
     return;
   }
 
-  results.innerHTML = `
-    <p class="result-part">Score: <span>${data.score_tag || "N/A"}</span></p>
-    <p class="result-part">Agreement: <span>${
-      data.agreement || "N/A"
-    }</span></p>
-    <p class="result-part">Subjectivity: <span>${
-      data.subjectivity || "N/A"
-    }</span></p>
-    <p class="result-part">Confidence: <span>${
-      data.confidence || "N/A"
-    }</span></p>
-    <p class="result-part">Irony: <span>${data.irony || "N/A"}</span></p>
+  resultContainer.innerHTML = `
+    <p class="result-part">Sentiment Score: <span>${responseData.score_tag}</span></p>
+    <p class="result-part">Agreement Level: <span>${responseData.agreement}</span></p>
+    <p class="result-part">Subjectivity Level: <span>${responseData.subjectivity}</span></p>
+    <p class="result-part">Confidence Level: <span>${responseData.confidence}</span></p>
+    <p class="result-part">Irony Detected: <span>${responseData.irony}</span></p>
   `;
 };
 
-export const handleSubmit = async (event) => {
+const submitFormHandler = async (event) => {
   event.preventDefault();
 
-  const input = document.querySelector("#url-input");
-  const feedback = document.querySelector(".feedback-container");
-  feedback.innerHTML = "";
-  handleError(false, "");
+  const urlInputElement = document.querySelector("#url-form input");
+  const feedbackSection = document.querySelector(".feedback-wrapper");
+  feedbackSection.innerHTML = "";
+  displayErrorMessage(false, "");
 
-  const isValid = handleURLValidation(input.value);
-  if (!isValid) {
+  const isURLValid = validateURLInput(urlInputElement.value);
+  if (!isURLValid) {
     return;
   }
 
-  setLoading(true);
+  setLoaderVisibility(true);
   try {
-    const response = await axios.post("http://localhost:8000/", {
-      url: input.value,
+    const apiResponse = await axios.post("http://localhost:8000/", {
+      url: urlInputElement.value,
     });
-    console.log("Server response:", response.data);
-    renderResponse(response.data);
-    feedback.innerHTML = "<p class='feedback-success'>Analysis successful!</p>";
+    displayResults(apiResponse.data);
+    feedbackSection.innerHTML =
+      "<p class='feedback-success'>The URL was successfully analyzed! Check the results below.</p>";
   } catch (error) {
-    console.error("Error during submission:", error);
-    handleError(true, "Failed to analyze URL. Please try again.");
+    displayErrorMessage(
+      true,
+      "There was an error processing your request. Please try again later."
+    );
   } finally {
-    setLoading(false);
+    setLoaderVisibility(false);
   }
 };
+
+export { submitFormHandler };
